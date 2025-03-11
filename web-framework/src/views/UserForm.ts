@@ -2,11 +2,15 @@ import { User, UserProps } from "../models/User"
 import { View } from "./View"
 
 export class UserForm extends View<User, UserProps> {
-  eventsMaps(): { [key: string]: () => void } {
+  constructor(parent: Element, model: User) {
+    super(parent, model)
+  }
+
+  eventsMap(): { [key: string]: () => void } {
     return {
+      "click:.save-model": this.onSaveClick,
       "click:.set-age": this.onSetAgeClick,
       "click:.set-name": this.onSetNameClick,
-      "click:.save-model": this.onSaveClick,
     }
   }
 
